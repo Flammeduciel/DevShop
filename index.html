@@ -1,0 +1,189 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevShop - Boutique en Ligne</title>
+    <link rel="stylesheet" href="assets/css/variables.css">
+    <link rel="stylesheet" href="assets/css/components.css">
+    <link rel="stylesheet" href="assets/css/layout.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Loader -->
+    <div id="loader" class="loader" aria-hidden="true">
+        <div class="loader-spinner"></div>
+        <p>Chargement des produits...</p>
+    </div>
+
+    <!-- Error Message -->
+    <div id="error-message" class="error-message" aria-hidden="true" role="alert">
+        <i class="fas fa-exclamation-triangle"></i>
+        <p id="error-text">Une erreur est survenue lors du chargement des produits.</p>
+        <button onclick="fetchProducts()" class="primary-button">Réessayer</button>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">
+                <h1>DevShop</h1>
+            </div>
+            
+            <nav class="navbar">
+                <div class="search-container header-search">
+                    <i class="fas fa-search"></i>
+                    <input 
+                        type="text" 
+                        id="search-input" 
+                        placeholder="Rechercher un produit..." 
+                        aria-label="Rechercher un produit"
+                    >
+                </div>
+                
+                <button id="cart-toggle" class="icon-button cart-button" aria-label="Ouvrir le panier">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span id="cart-count" class="cart-count" aria-live="polite">0</span>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Filters Sidebar -->
+        <aside class="filter-sidebar" id="filter-sidebar">
+            <div class="filter-header">
+                <h2>Filtres</h2>
+                <button id="close-filters" class="icon-button" aria-label="Fermer le menu">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <!-- Barre de recherche dans le tiroir -->
+            <div class="filter-search-container">
+                <div class="search-container">
+                    <i class="fas fa-search"></i>
+                    <input 
+                        type="text" 
+                        id="sidebar-search-input" 
+                        placeholder="Rechercher un produit..." 
+                        aria-label="Rechercher un produit"
+                    >
+                </div>
+            </div>
+            
+            <section class="filter-section">
+                <h3>Catégories</h3>
+                <div class="category-filters" id="category-filters" role="group" aria-label="Filtres par catégorie">
+                    <!-- Les boutons de catégorie seront générés dynamiquement -->
+                </div>
+            </section>
+            
+            <section class="filter-section">
+                <h3>Prix</h3>
+                <div class="range-field">
+                    <input 
+                        type="range" 
+                        id="price-range" 
+                        min="0" 
+                        max="1000" 
+                        value="1000" 
+                        aria-label="Filtrer par prix maximum"
+                    >
+                    <div class="range-values">
+                        <span id="min-price">0€</span>
+                        <span id="max-price">1000€</span>
+                    </div>
+                </div>
+            </section>
+        </aside>
+
+        <!-- Products Section -->
+        <section class="products-section">
+            <div class="catalog-heading">
+                <div class="title-group">
+                    <h1>Nos Produits</h1>
+                    <span id="product-count" class="product-count"></span>
+                </div>
+                
+                <div class="sort-menu">
+                    <details>
+                        <summary aria-label="Options de tri">
+                            <span>Trier par</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </summary>
+                        <div class="sort-options">
+                            <button class="sort-option" data-sort="default" aria-pressed="true">
+                                Par défaut
+                            </button>
+                            <button class="sort-option" data-sort="price-asc">
+                                Prix: Croissant
+                            </button>
+                            <button class="sort-option" data-sort="price-desc">
+                                Prix: Décroissant
+                            </button>
+                            <button class="sort-option" data-sort="rating">
+                                Meilleure note
+                            </button>
+                        </div>
+                    </details>
+                </div>
+            </div>
+
+            <div class="products-grid" id="products-grid" role="region" aria-live="polite" aria-label="Liste des produits">
+                <!-- Les cartes de produits seront générées dynamiquement -->
+            </div>
+        </section>
+    </main>
+
+    <!-- Cart Drawer (Off-canvas) -->
+    <aside class="cart-drawer" id="cart-drawer" aria-hidden="true" role="dialog" aria-modal="true">
+        <div class="cart-overlay" onclick="closeCart()"></div>
+        
+        <div class="cart-content">
+            <div class="cart-header">
+                <h2>Votre Panier</h2>
+                <button id="close-cart" class="icon-button" onclick="closeCart()" aria-label="Fermer le panier">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+
+            <div class="cart-items" id="cart-items">
+                <!-- Les articles du panier seront générés dynamiquement -->
+                <div class="cart-empty" id="cart-empty-message">
+                    <i class="fas fa-shopping-bag"></i>
+                    <p>Votre panier est vide</p>
+                    <button onclick="closeCart()" class="primary-button">Continuer vos achats</button>
+                </div>
+            </div>
+
+            <div class="cart-footer">
+                <div class="cart-total">
+                    <span>Total:</span>
+                    <strong id="cart-total">0,00€</strong>
+                </div>
+                <button class="primary-button checkout-button" onclick="checkout()">
+                    Passer à la caisse
+                </button>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Mobile Bottom Navigation -->
+    <nav class="mobile-nav" id="mobile-nav">
+        <button class="mobile-nav-item" onclick="toggleSidebar()" aria-label="Filtres">
+            <i class="fas fa-filter"></i>
+            <span>Filtres</span>
+        </button>
+        <button class="mobile-nav-item" onclick="openCart()" aria-label="Panier">
+            <i class="fas fa-shopping-cart"></i>
+            <span>Panier</span>
+            <span id="mobile-cart-count" class="mobile-cart-count">0</span>
+        </button>
+    </nav>
+
+    <script src="app.js"></script>
+</body>
+</html>
