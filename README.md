@@ -10,8 +10,8 @@ DevShop est une application e-commerce dynamique de type Single Page Application
 
 ## Démo
 
-- GitHub Pages : https://votre-nom.github.io/DevShop/
-- Repository : https://github.com/votre-nom/DevShop
+- GitHub Pages : https://github.com/Flammeduciel/DevShop.git
+- Repository : https://github.com/Flammeduciel/DevShop
 
 ## Fonctionnalités
 
@@ -81,7 +81,7 @@ Le site peut être publié depuis la branche `main` et le dossier racine. Pour a
 4. Sélectionner la branche `main` et le dossier `/` (root)
 5. Sauvegarder
 
-Le site sera accessible à l'URL `https://votre-nom.github.io/DevShop/`
+Le site sera accessible à l'URL `https://github.com/Flammeduciel/DevShop/`
 
 ## Technologies
 
@@ -92,6 +92,6 @@ Le site sera accessible à l'URL `https://votre-nom.github.io/DevShop/`
 - localStorage pour la persistance du panier
 - Font Awesome 6.4.0 pour les icônes d'interface
 
-## Auteur
+## Cadre de realisation
 
 Projet réalisé dans le cadre de l'apprentissage à Akieni Academy.
