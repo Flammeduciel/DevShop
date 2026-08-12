@@ -627,9 +627,19 @@ input::placeholder {
     color: var(--text-tertiary);
 }
 
+.cart-empty h3 {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text);
+}
+
 .cart-empty p {
     font-size: 14px;
-    color: var(--text);
+    color: var(--text-secondary);
+}
+
+.cart-empty .primary-button {
+    min-width: 200px;
 }
 
 .cart-item {
@@ -681,19 +691,22 @@ input::placeholder {
 }
 
 .cart-item-quantity {
-    display: flex;
+    display: inline-flex;
     align-items: center;
-    gap: 8px;
+    width: fit-content;
     margin-top: 4px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-sm);
+    overflow: hidden;
 }
 
 .cart-quantity-button {
-    width: 28px;
-    height: 28px;
+    width: 30px;
+    height: 30px;
     padding: 0;
-    background: var(--surface);
-    border: 1px solid var(--line);
-    border-radius: 50%;
+    background: transparent;
+    border: 0;
     font-size: 12px;
     color: var(--text);
     cursor: pointer;
@@ -702,25 +715,35 @@ input::placeholder {
     transition: all var(--duration) var(--ease-out);
 }
 
-.cart-quantity-button:hover {
+.cart-quantity-button:hover:not(:disabled) {
     background: var(--line);
 }
 
 .cart-quantity-button:disabled {
-    opacity: 0.5;
+    opacity: 0.4;
     cursor: not-allowed;
 }
 
 .cart-item-quantity input {
     width: 40px;
-    height: 28px;
-    padding: 0 8px;
+    height: 30px;
+    padding: 0;
     background: var(--surface);
-    border: 1px solid var(--line);
-    border-radius: var(--radius-sm);
+    border: 0;
+    border-left: 1px solid var(--line);
+    border-right: 1px solid var(--line);
+    border-radius: 0;
     font-size: 12px;
     text-align: center;
     color: var(--text);
+    appearance: textfield;
+    -moz-appearance: textfield;
+}
+
+.cart-item-quantity input::-webkit-outer-spin-button,
+.cart-item-quantity input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
 }
 
 .cart-item-quantity input:focus {
@@ -732,16 +755,26 @@ input::placeholder {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 8px;
+    align-self: start;
+    width: 32px;
+    height: 32px;
+    padding: 0;
     background: transparent;
-    border: 0;
+    border: 1px solid transparent;
+    border-radius: var(--radius-sm);
     color: var(--danger);
     cursor: pointer;
-    transition: background var(--duration) var(--ease-out);
+    transition: all var(--duration) var(--ease-out);
 }
 
 .cart-item-remove:hover {
     background: var(--danger-soft);
+    border-color: var(--danger);
+}
+
+.cart-item-remove:focus-visible {
+    outline: 2px solid var(--danger);
+    outline-offset: 1px;
 }
 
 .cart-item-remove i {
