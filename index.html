@@ -154,7 +154,8 @@
                 <!-- Les articles du panier seront générés dynamiquement -->
                 <div class="cart-empty" id="cart-empty-message">
                     <i class="fas fa-shopping-bag"></i>
-                    <p>Votre panier est vide</p>
+                    <h3>Votre panier est vide</h3>
+                    <p>Il n'y a aucun article dans votre panier pour le moment.</p>
                     <button onclick="closeCart()" class="primary-button">Continuer vos achats</button>
                 </div>
             </div>
@@ -164,6 +165,9 @@
                     <span>Total:</span>
                     <strong id="cart-total">0,00€</strong>
                 </div>
+                <button class="clear-cart-button" onclick="clearCart()" aria-label="Vider le panier">
+                    <i class="fas fa-trash-alt"></i> Vider le panier
+                </button>
                 <button class="primary-button checkout-button" onclick="checkout()">
                     Passer à la caisse
                 </button>
