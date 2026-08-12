@@ -1,0 +1,160 @@
+/* ========================================
+   DevShop - Variables CSS & Reset
+   Fichier : variables.css
+   ======================================== */
+
+:root {
+    /* Durées et Easing */
+    --duration: 180ms;
+    --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+    
+    /* Variable pour le slider de prix */
+    --range-progress: 100%;
+    
+    /* Couleurs Primaires */
+    --primary: #0066cc;
+    --primary-hover: #0054ad;
+    --primary-soft: #eaf3ff;
+    
+    /* Couleurs de Surface */
+    --canvas: #ffffff;
+    --surface: #ffffff;
+    --surface-soft: #f7f7fa;
+    --surface-blue: #f1f6ff;
+    
+    /* Couleurs de Texte */
+    --text: #1d1d1f;
+    --text-secondary: #62626a;
+    --text-tertiary: #7b7b83;
+    
+    /* Couleurs de Ligne et Bordures */
+    --line: #e5e5ea;
+    --line-strong: #d1d1d6;
+    
+    /* Couleurs d'État */
+    --danger: #b42335;
+    --danger-soft: #fff0f2;
+    --success: #28a745;
+    --success-soft: #d4edda;
+    
+    /* Rayons */
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-card: 14px;
+    --radius-pill: 999px;
+    
+    /* Ombres */
+    --shadow-product: 0 5px 18px rgb(29 29 31 / 12%);
+    --shadow-card: 0 2px 8px rgb(29 29 31 / 8%);
+    --shadow-menu: 0 8px 24px rgb(29 29 31 / 12%);
+    
+    /* Typographie */
+    --font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    
+    /* Espacements */
+    --header-height: 64px;
+    --mobile-nav-height: 60px;
+}
+
+/* ========================================
+   RESET DE BASE
+   ======================================== */
+
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 16px;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-family);
+    font-size: 16px;
+    line-height: 1.45;
+    color: var(--text);
+    background-color: var(--canvas);
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* Focus visible pour l'accessibilité */
+button:focus-visible,
+input:focus-visible,
+summary:focus-visible,
+a:focus-visible {
+    outline: 3px solid rgb(0 102 204 / 32%);
+    outline-offset: 3px;
+}
+
+/* Sélection de texte */
+::selection {
+    background: var(--primary-soft);
+    color: var(--primary);
+}
+
+/* Scrollbar personnalisé */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--surface-soft);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--line-strong);
+    border-radius: var(--radius-pill);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--text-secondary);
+}
+
+/* ========================================
+   UTILITY CLASSES
+   ======================================== */
+
+.hidden {
+    display: none !important;
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* Fix pour les boutons de type button dans les formulaires */
+button[type="button"],
+button[type="submit"],
+button[type="reset"] {
+    -webkit-appearance: button;
+}
+
+/* Fix pour les inputs de type range */
+input[type="range"] {
+    -webkit-appearance: none;
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+    }
+}
