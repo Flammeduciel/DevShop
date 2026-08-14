@@ -12,15 +12,15 @@
     --range-progress: 100%;
     
     /* Couleurs Primaires */
-    --primary: #0066cc;
-    --primary-hover: #0054ad;
-    --primary-soft: #eaf3ff;
+    --primary: #0d9488;
+    --primary-hover: #0f766e;
+    --primary-soft: #f0fdfa;
     
     /* Couleurs de Surface */
     --canvas: #ffffff;
     --surface: #ffffff;
     --surface-soft: #f7f7fa;
-    --surface-blue: #f1f6ff;
+    --surface-primary: #f0fdfa;
     
     /* Couleurs de Texte */
     --text: #1d1d1f;
@@ -86,7 +86,7 @@ button:focus-visible,
 input:focus-visible,
 summary:focus-visible,
 a:focus-visible {
-    outline: 3px solid rgb(0 102 204 / 32%);
+    outline: 3px solid rgb(13 148 136 / 32%);
     outline-offset: 3px;
 }
 

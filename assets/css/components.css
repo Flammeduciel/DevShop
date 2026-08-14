@@ -496,16 +496,8 @@ input::placeholder {
    MENUS ET DIALOGUES
    ======================================== */
 
-/* Sort Menu */
-.sort-menu {
-    position: relative;
-}
-
-.sort-menu summary {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    min-width: 164px;
+/* Sort Select */
+.sort-select {
     min-height: 40px;
     padding: 0 12px;
     background: var(--surface);
@@ -513,67 +505,49 @@ input::placeholder {
     border-radius: var(--radius-sm);
     font-size: 12px;
     font-weight: 600;
-    cursor: pointer;
     color: var(--text);
+    cursor: pointer;
     transition: border-color var(--duration) var(--ease-out);
 }
 
-.sort-menu summary:hover {
+.sort-select:hover {
     border-color: var(--line-strong);
 }
 
-.sort-menu summary:focus-visible {
-    outline: none;
+.sort-select:focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
 }
 
-.sort-menu summary i {
-    font-size: 12px;
-    transition: transform var(--duration) var(--ease-out);
-}
-
-.sort-menu[open] summary i {
-    transform: rotate(180deg);
-}
-
-.sort-options {
-    position: absolute;
-    z-index: 100;
-    top: calc(100% + 6px);
+/* Add to Cart Notification */
+.add-to-cart-notification {
+    position: fixed;
+    bottom: 100px;
+    left: 0;
     right: 0;
-    min-width: 180px;
-    padding: 6px;
-    background: var(--surface);
-    border: 1px solid var(--line);
-    border-radius: var(--radius-md);
-    box-shadow: var(--shadow-menu);
+    width: fit-content;
+    margin: 0 auto;
+    background: var(--success);
+    color: white;
+    padding: 12px 24px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
     display: flex;
-    flex-direction: column;
-    gap: 4px;
+    align-items: center;
+    gap: 8px;
+    z-index: 3000;
+    animation: toast-in 0.3s ease-out;
 }
 
-.sort-option {
-    width: 100%;
-    padding: 8px 12px;
-    background: transparent;
-    color: var(--text-secondary);
-    border: 0;
-    border-radius: var(--radius-sm);
-    font-size: 12px;
-    font-weight: 400;
-    text-align: left;
-    cursor: pointer;
-    transition: all var(--duration) var(--ease-out);
-}
-
-.sort-option:hover {
-    background: var(--surface-soft);
-    color: var(--text);
-}
-
-.sort-option[aria-pressed="true"] {
-    background: var(--primary-soft);
-    color: var(--primary);
-    font-weight: 600;
+@keyframes toast-in {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
 }
 
 /* ========================================

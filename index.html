@@ -108,28 +108,12 @@
                     <span id="product-count" class="product-count"></span>
                 </div>
                 
-                <div class="sort-menu">
-                    <details>
-                        <summary aria-label="Options de tri">
-                            <span>Trier par</span>
-                            <i class="fas fa-chevron-down"></i>
-                        </summary>
-                        <div class="sort-options">
-                            <button class="sort-option" data-sort="default" aria-pressed="true">
-                                Par défaut
-                            </button>
-                            <button class="sort-option" data-sort="price-asc">
-                                Prix: Croissant
-                            </button>
-                            <button class="sort-option" data-sort="price-desc">
-                                Prix: Décroissant
-                            </button>
-                            <button class="sort-option" data-sort="rating">
-                                Meilleure note
-                            </button>
-                        </div>
-                    </details>
-                </div>
+                <select class="sort-select" id="sort-select" aria-label="Trier par">
+                    <option value="default">Trier par</option>
+                    <option value="price-asc">Prix: Croissant</option>
+                    <option value="price-desc">Prix: Décroissant</option>
+                    <option value="rating">Meilleure note</option>
+                </select>
             </div>
 
             <div class="products-grid" id="products-grid" role="region" aria-live="polite" aria-label="Liste des produits">
