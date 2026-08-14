@@ -186,7 +186,7 @@
     flex-direction: column;
 }
 
-.title-group h1 {
+.title-group h2 {
     font-size: clamp(26px, 3vw, 34px);
     font-weight: 600;
     letter-spacing: -0.025em;
