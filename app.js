@@ -90,12 +90,9 @@ function setupEventListeners() {
     });
     
     // Filtres de tri
-    document.querySelectorAll('.sort-option').forEach(button => {
-        button.addEventListener('click', () => {
-            currentSort = button.dataset.sort;
-            updateSortButtons();
-            sortAndDisplayProducts();
-        });
+    document.getElementById('sort-select').addEventListener('change', (e) => {
+        currentSort = e.target.value;
+        sortAndDisplayProducts();
     });
     
     // Fermer le panier avec Escape
@@ -413,14 +410,7 @@ function resetFilters() {
     applyAllFilters();
 }
 
-/**
- * Met à jour les boutons de tri
- */
-function updateSortButtons() {
-    document.querySelectorAll('.sort-option').forEach(button => {
-        button.setAttribute('aria-pressed', button.dataset.sort === currentSort);
-    });
-}
+
 
 // ========================================
 // 6. GESTION DU PANIER
@@ -472,56 +462,10 @@ function showAddToCartFeedback(productName) {
         <span>${truncateString(productName, 20)} ajouté au panier!</span>
     `;
     
-    // Styles inline pour la notification
-    notification.style.cssText = `
-        position: fixed;
-        bottom: 100px;
-        left: 50%;
-        transform: translateX(-50%);
-        background: #28a745;
-        color: white;
-        padding: 12px 24px;
-        border-radius: 8px;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        z-index: 3000;
-        animation: slideIn 0.3s ease-out;
-    `;
-    
     document.body.appendChild(notification);
     
-    // Animations
-    const style = document.createElement('style');
-    style.textContent = `
-        @keyframes slideIn {
-            from {
-                transform: translateX(-50%) translateY(20px);
-                opacity: 0;
-            }
-            to {
-                transform: translateX(-50%) translateY(0);
-                opacity: 1;
-            }
-        }
-        @keyframes slideOut {
-            from {
-                transform: translateX(-50%) translateY(0);
-                opacity: 1;
-            }
-            to {
-                transform: translateX(-50%) translateY(-20px);
-                opacity: 0;
-            }
-        }
-    `;
-    document.head.appendChild(style);
-    
-    // Supprimer après 2 secondes
     setTimeout(() => {
-        notification.style.animation = 'slideOut 0.3s ease-out forwards';
-        setTimeout(() => notification.remove(), 300);
+        notification.remove();
     }, 2000);
 }
 

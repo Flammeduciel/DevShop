@@ -541,12 +541,8 @@
         gap: 16px;
     }
     
-    .sort-menu summary {
+    .sort-select {
         min-width: 140px;
-    }
-    
-    .sort-options {
-        min-width: 160px;
     }
     
     .products-grid {
@@ -647,7 +643,15 @@
         min-width: 0;
     }
     
-    .sort-menu {
+    .sort-select {
         display: none;
+    }
+    
+    .add-to-cart-notification {
+        left: 16px;
+        right: 16px;
+        transform: none;
+        width: auto;
+        max-width: calc(100% - 32px);
     }
 }
